@@ -1,13 +1,13 @@
 package com.company;
 
-import java.util.Arrays;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
 
     public static void main(String[] args){
 
-        //создаем игру
-        Game gameOfLife = new GameOfLife();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringGameConfig.class);
+        Game gameOfLife = context.getBean("gameOfLife",GameOfLife.class);
 
         //запускаем планер
         gameOfLife.setAliveCells(4,4);

@@ -1,7 +1,12 @@
 package com.company;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("gameOfLife")
 public class GameOfLife implements Game{
-    private GameField gameField = new MatrixGameField(12,12);
+    @Autowired
+    private GameField gameField;
 
     @Override
     public boolean isGameOver()

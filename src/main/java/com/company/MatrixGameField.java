@@ -1,12 +1,24 @@
 package com.company;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
-public class MatrixGameField extends GameField{
-    private ValueCell [][] gameField = new ValueCell[height][width];
-    private ValueCell [][] newGameField = new ValueCell[height][width];
+@Component
 
-    MatrixGameField(int width, int height)
+public class MatrixGameField extends GameField{
+    @Autowired
+    @Qualifier("gameField")
+    private ValueCell [][] gameField;
+
+    @Autowired
+    @Qualifier("newGameField")
+    private ValueCell [][] newGameField;
+
+
+    MatrixGameField(@Value("${gameSettings.width}") int width,@Value("${gameSettings.height}") int height)
     {
         super(width, height);
     }
